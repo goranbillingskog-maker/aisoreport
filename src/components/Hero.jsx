@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
-import { Sparkles } from 'lucide-react';
 
 export default function Hero() {
   const [formData, setFormData] = useState({
