@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
 
+// Inline SVG Sparkles Icon
+const SparklesIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+  </svg>
+);
+
 export default function Hero() {
   const [formData, setFormData] = useState({
     brandName: '',
@@ -88,7 +95,7 @@ export default function Hero() {
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-citara-purple/5 via-transparent to-citara-pink/5 animate-gradient" />
       
-      {/* Floating orbs for visual interest */}
+      {/* Floating orbs */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-citara-purple/10 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-citara-pink/10 rounded-full blur-3xl animate-float-delayed" />
       
@@ -96,7 +103,7 @@ export default function Hero() {
         <div className="text-center max-w-3xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-citara-gradient text-white rounded-full text-sm font-semibold mb-6 animate-fade-in shadow-lg">
-            <Sparkles className="w-4 h-4" />
+            <SparklesIcon />
             Free AI Visibility Analysis
           </div>
 
@@ -114,7 +121,6 @@ export default function Hero() {
           {/* Form */}
           <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100 animate-fade-in-up backdrop-blur-sm">
             <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Brand Name */}
               <div className="group">
                 <input
                   type="text"
@@ -126,7 +132,6 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Website URL */}
               <div className="group">
                 <input
                   type="text"
@@ -138,7 +143,6 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Email */}
               <div className="group">
                 <input
                   type="email"
@@ -150,7 +154,6 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -169,7 +172,6 @@ export default function Hero() {
                 )}
               </button>
 
-              {/* Status Message */}
               {status.message && (
                 <div className={`p-4 rounded-xl animate-slide-down ${
                   status.type === 'success' 
@@ -181,13 +183,11 @@ export default function Hero() {
               )}
             </form>
 
-            {/* Privacy Note */}
             <p className="text-sm text-gray-500 mt-6">
               We'll send you a one-time report. No spam, unsubscribe anytime.
             </p>
           </div>
 
-          {/* Social Proof */}
           <p className="text-gray-600 mt-8 animate-fade-in-delayed">
             Join growth-stage B2B companies tracking their AI visibility
           </p>
@@ -199,50 +199,26 @@ export default function Hero() {
           0%, 100% { opacity: 0.3; }
           50% { opacity: 0.6; }
         }
-        
         @keyframes float {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-20px) rotate(5deg); }
         }
-        
         @keyframes floatDelayed {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-30px) rotate(-5deg); }
         }
-        
         @keyframes slideUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        
         @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        
         .animate-gradient { animation: gradient 8s ease-in-out infinite; }
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-float-delayed { animation: floatDelayed 8s ease-in-out infinite; }
